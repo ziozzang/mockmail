@@ -1,7 +1,23 @@
+
 An email (SMTP) server that accepts all emails and shows them in a web interface.
 
 Inspired by the now apparently defunct [mockemail](http://mockemail.sourceforge.net/) project.
 License: GPL3+
+
+
+Run with Docker
+===============
+* code by Jioh L. Jung <ziozzang@gmail.com>
+
+```
+docker build -t mockmail .
+docker run \
+  --name=mockmail \
+  -d --restart=always \
+  -p 25:25 -p 2580:2580 \
+  mockmail
+```
+
 
 Installation
 ============
