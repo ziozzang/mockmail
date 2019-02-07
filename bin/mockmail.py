@@ -556,6 +556,10 @@ def mockmail(config):
     smtpThread.join()
     httpThread.join()
 
+    if not config['daemonize']:
+      print (">> mockmail Started <<")
+      smtpThread.join()
+
 
 def main():
     parser = OptionParser()
@@ -566,7 +570,7 @@ def main():
         '-d', '--daemonize', action='store_const', const=True, dest='daemonize', default=None,
         help='Run mockmail in the background. Overwrites configuration')
     parser.add_option(
-        '-i', '--interactive', action='store_const', const=True, dest='daemonize', default=None,
+        '-i', '--interactive', action='store_const', const=False, dest='daemonize', default=None,
         help='Run mockmail in the foreground. Overwrites configuration')
     parser.add_option(
         '--resourcedir', dest='resourcedir', metavar='DIR',
